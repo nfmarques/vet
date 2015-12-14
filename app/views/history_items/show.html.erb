@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Observation:</strong>
+  <%= @history_item.observation %>
+</p>
+
+<p>
+  <strong>Animal:</strong>
+  <%= @history_item.animal %>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @history_item.document %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @history_item.user %>
+</p>
+
+<%= link_to 'Edit', edit_history_item_path(@history_item) %> |
+<%= link_to 'Back', history_items_path %>

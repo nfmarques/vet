@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  send_email_date: 2015-12-14
+  active: false
+  clinic_id: 
+  auto_email_content_id: 
+
+two:
+  send_email_date: 2015-12-14
+  active: false
+  clinic_id: 
+  auto_email_content_id: 

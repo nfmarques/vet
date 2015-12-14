@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :history_items
   root :to => 'clinics#index'
 
   resources :animals

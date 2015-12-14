@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :role
 
+  has_many :clinics, through: :user_clinics
+  has_many :history_items
+
 end

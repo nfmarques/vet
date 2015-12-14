@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213204012) do
+ActiveRecord::Schema.define(version: 20151214012758) do
 
   create_table "animals", force: :cascade do |t|
     t.string "animal_name", limit: 255
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20151213204012) do
   add_index "animals", ["gender_id"], name: "index_animals_on_gender_id", using: :btree
   add_index "animals", ["race_id"], name: "index_animals_on_race_id", using: :btree
 
+  create_table "auto_email_contents", force: :cascade do |t|
+    t.string "subject", limit: 255
+    t.text "body", limit: 65535
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "description", limit: 255
     t.datetime "created_at", null: false
@@ -46,11 +53,40 @@ ActiveRecord::Schema.define(version: 20151213204012) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "document_types", force: :cascade do |t|
+    t.string "description", limit: 255
+    t.string "image_path", limit: 255
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.string "file_path", limit: 255
+    t.integer "document_type_id", limit: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "history_item_id", limit: 4
+  end
+
+  add_index "documents", ["document_type_id"], name: "index_documents_on_document_type_id", using: :btree
+  add_index "documents", ["history_item_id"], name: "index_documents_on_history_item_id", using: :btree
+
   create_table "genders", force: :cascade do |t|
     t.string "description", limit: 255
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "history_items", force: :cascade do |t|
+    t.text "observation", limit: 65535
+    t.integer "animal_id", limit: 4
+    t.integer "user_id", limit: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "history_items", ["animal_id"], name: "index_history_items_on_animal_id", using: :btree
+  add_index "history_items", ["user_id"], name: "index_history_items_on_user_id", using: :btree
 
   create_table "races", force: :cascade do |t|
     t.string "description", limit: 255
@@ -63,6 +99,18 @@ ActiveRecord::Schema.define(version: 20151213204012) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "schedules", force: :cascade do |t|
+    t.date "send_email_date"
+    t.boolean "active"
+    t.integer "clinic_id", limit: 4
+    t.integer "auto_email_content_id", limit: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "schedules", ["auto_email_content_id"], name: "index_schedules_on_auto_email_content_id", using: :btree
+  add_index "schedules", ["clinic_id"], name: "index_schedules_on_clinic_id", using: :btree
 
   create_table "user_clinics", force: :cascade do |t|
     t.integer "user_id", limit: 4
@@ -98,5 +146,11 @@ ActiveRecord::Schema.define(version: 20151213204012) do
   add_foreign_key "animals", "clinics"
   add_foreign_key "animals", "genders"
   add_foreign_key "animals", "races"
+  add_foreign_key "documents", "document_types"
+  add_foreign_key "documents", "history_items"
+  add_foreign_key "history_items", "animals"
+  add_foreign_key "history_items", "users"
+  add_foreign_key "schedules", "auto_email_contents"
+  add_foreign_key "schedules", "clinics"
   add_foreign_key "users", "roles"
 end
