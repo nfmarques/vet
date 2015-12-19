@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151214012758) do
+ActiveRecord::Schema.define(version: 20151215002407) do
 
   create_table "animals", force: :cascade do |t|
     t.string "animal_name", limit: 255
@@ -66,6 +66,10 @@ ActiveRecord::Schema.define(version: 20151214012758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "history_item_id", limit: 4
+    t.string "doc_file_name", limit: 255
+    t.string "doc_content_type", limit: 255
+    t.integer "doc_file_size", limit: 4
+    t.datetime "doc_updated_at"
   end
 
   add_index "documents", ["document_type_id"], name: "index_documents_on_document_type_id", using: :btree
