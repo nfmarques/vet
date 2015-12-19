@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
   <title>Animal Cardio</title>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -7,26 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="header">
-  <div class="left">
-    <h1>Animal Cardio Header</h1>
-  </div>
-  <div class="right">
-    <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>
-        <%= link_to 'Edit Profile', edit_user_registration_path %> <b>|</b>
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% else %>
-        <%= link_to 'Sign up', new_user_registration_path %> <b>|</b>
-        <%= link_to 'Login', new_user_session_path %>
-    <% end %>
-  </div>
+<div id="header">
+  <%# <p>Animal Cardio Header</p> %>
+  <div id="logo"></div>
 </div>
-
 <hr/>
-
 <p class="notice"><%= notice %></p>
+
 <p class="alert"><%= alert %></p>
+
+<div id="session">
+  <% if user_signed_in? %>
+      Logged in as <strong><%= current_user.email %></strong>
+      <%= link_to 'Edit Profile', edit_user_registration_path %> <b>|</b>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+      <%= link_to 'Sign up', new_user_registration_path %> <b>|</b>
+      <%= link_to 'Login', new_user_session_path %>
+  <% end %>
+</div>
+<div style="clear:both"></div>
+<% if user_signed_in? %>
+    <div id="menu">
+      <ul id="menu-items" class="menu-horizontal">
+        <li class="menu-item-horizontal"><%= link_to 'Clinics', clinics_path %></li>
+        <li class="menu-item-horizontal"><%= link_to 'Animal', animals_path %></li>
+      </ul>
+    </div>
+<% end %>
 
 <%= yield %>
 

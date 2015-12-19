@@ -18,3 +18,39 @@ body {
     background-color: #C0E6C5;
     color: #1E3C22;
 }
+
+div#logo {
+    background: url(/logo_image.png) no-repeat center center;
+    height: 100px;
+    width: 100%;
+}
+
+div#session {
+    float: right;
+}
+
+div#menu {
+
+}
+
+div#menu ul#menu-items {
+    padding: 0 0 0 0;
+}
+
+div#menu ul#menu-items li.menu-item-horizontal {
+    list-style-type: none;
+    display: inline;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #1E3C22;
+}
+
+div#menu ul#menu-items li.menu-item-horizontal a {
+    color: #C0E6C5;
+}
+
+div#menu ul#menu-items li.menu-item-horizontal a:hover {
+    color: white;
+}
