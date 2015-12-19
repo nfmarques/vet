@@ -1,0 +1,8 @@
+<%= div_for animal do %>
+    <%= animal.animal_name %>
+    <%= animal.owner_name %>
+
+    <%= link_to 'Show', clinic_animal_path(@clinic, animal) %>
+    <%= link_to 'Edit', edit_clinic_animal_path(@clinic, animal) %>
+    <%= link_to 'Destroy', clinic_animal_path(@clinic, animal), method: :delete, data: {confirm: 'Are you sure?'} %>
+<% end %>

@@ -1,13 +1,40 @@
-<p id="notice"><%= notice %></p>
-
 <div>
-  <%= @clinic.clinic_name %> <br>
-  <%= @clinic.email %> <br>
-  <%= @clinic.address %> <br>
-  <%= @clinic.phone %> <br>
+  <div class="field">
+    <%= label_tag 'Nome:' %>
+    <%= @clinic.clinic_name %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Email:' %>
+    <%= @clinic.clinic_name %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Morada:' %>
+    <%= @clinic.email %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Email:' %>
+    <%= @clinic.address %>
+  </div>
+
+  <div class="field">
+    <%= label_tag 'Telefone:' %>
+    <%= @clinic.phone %>
+  </div>
 </div>
 
 <br>
 
+<h3>Animals</h3>
+
+<div>
+  <%= render @clinic.animals %>
+</div>
+
+<br>
+
+<%= link_to 'New Animal', new_clinic_animal_path(@clinic) %>
 <%= link_to 'Edit', edit_clinic_path(@clinic) %> |
 <%= link_to 'Back', clinics_path %>

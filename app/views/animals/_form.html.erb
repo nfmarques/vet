@@ -1,4 +1,4 @@
-<%= form_for(@animal) do |f| %>
+<%= form_for([@clinic, @animal]) do |f| %>
     <% if @animal.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
@@ -10,6 +10,26 @@
           </ul>
         </div>
     <% end %>
+
+    <div class="field">
+      <%= f.label 'Nome animal:' %><br>
+      <%= f.text_field :animal_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Nome dono:' %><br>
+      <%= f.text_field :owner_name %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Data de nascimento:' %><br>
+      <%= f.text_field :birth_date %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Peso:' %><br>
+      <%= f.text_field :weigth %>
+    </div>
 
     <div class="actions">
       <%= f.submit %>

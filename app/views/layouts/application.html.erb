@@ -12,9 +12,6 @@
   <div id="logo"></div>
 </div>
 <hr/>
-<p class="notice"><%= notice %></p>
-
-<p class="alert"><%= alert %></p>
 
 <div id="session">
   <% if user_signed_in? %>
@@ -33,10 +30,14 @@
     <div id="menu">
       <ul id="menu-items" class="menu-horizontal">
         <li class="menu-item-horizontal"><%= link_to 'Clinics', clinics_path %></li>
-        <li class="menu-item-horizontal"><%= link_to 'Animal', animals_path %></li>
+        <li class="menu-item-horizontal"><%= link_to 'Animal', clinics_path %></li>
       </ul>
     </div>
 <% end %>
+
+<p class="notice"><%= notice %></p>
+
+<p class="alert"><%= alert %></p>
 
 <%= yield %>
 

@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <%= @animal.animal_name %> <br>
+  <%= @animal.owner_name %> <br>
+  <%= @animal.birth_date %> <br>
+  <%= @animal.weigth %> <br>
+</div>
 
-<%= link_to 'Edit', edit_animal_path(@animal) %> |
-<%= link_to 'Back', animals_path %>
+<%= link_to 'Edit', edit_clinic_animal_path(@clinic, @animal) %> |
+<%= link_to 'Back', clinic_path(@clinic) %>
