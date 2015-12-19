@@ -1,7 +1,6 @@
 #
 log/**
 .idea/
-*.log
 tmp/
 tmp/**
 
