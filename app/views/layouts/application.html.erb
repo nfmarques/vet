@@ -7,24 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="header">
-  <h1>Animal Cardio Header</h1>
+<div class="header">
+  <div class="left">
+    <h1>Animal Cardio Header</h1>
+  </div>
+  <div class="right">
+    <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>
+        <%= link_to 'Edit Profile', edit_user_registration_path %> <b>|</b>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%= link_to 'Sign up', new_user_registration_path %> <b>|</b>
+        <%= link_to 'Login', new_user_session_path %>
+    <% end %>
+  </div>
 </div>
+
 <hr/>
+
 <p class="notice"><%= notice %></p>
-
 <p class="alert"><%= alert %></p>
-
-<div>
-  <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>
-      <%= link_to 'Edit Profile', edit_user_registration_path %> <b>|</b>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-  <% else %>
-      <%= link_to 'Sign up', new_user_registration_path %> <b>|</b>
-      <%= link_to 'Login', new_user_session_path %>
-  <% end %>
-</div>
 
 <%= yield %>
 

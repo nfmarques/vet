@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   resources :history_items
   root :to => 'clinics#index'
 
-  resources :animals
-  resources :clinics
+  #resources :animals
+  #resources :clinics
+
+  resources :clinics do
+    resources :animals
+  end
+
 
   devise_for :users
 
