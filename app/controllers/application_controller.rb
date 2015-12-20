@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    # está correcto porque o email deixa de ser o authentication_keys e passa a ser o username, mas isto só da para um o que é um verdadeiro cócó.
-    #devise_parameter_sanitizer.for(:sign_up) << :email
-
-    # assim dá para todos, tem é de ser ir buscar todos os nomes que lá estão.
     # new registration
     devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:username, :email, :password, :password_confirmation, :first_name, :last_name)

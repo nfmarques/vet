@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
 
-  resources :history_items
   root :to => 'clinics#index'
 
-  #resources :animals
-  #resources :clinics
+  devise_for :users, controllers: {registrations: 'users/registrations'}, path_names: {sign_up: 'disable_sign_up'}
+
+  resources :history_items
+  # resources :animals
+  # resources :clinics
 
   resources :clinics do
-    resources :animals
+    resources :animals, :except => [:index]
   end
 
-
-  devise_for :users
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
