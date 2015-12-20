@@ -1,5 +1,6 @@
 class ClinicsController < ApplicationController
-  before_action :set_clinic, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource :clinic
 
   def index
     @clinics = Clinic.all
@@ -50,10 +51,6 @@ class ClinicsController < ApplicationController
   end
 
   private
-
-  def set_clinic
-    @clinic = Clinic.find(params[:id])
-  end
 
   def clinic_params
     params.require(:clinic).permit(:clinic_name, :address, :email, :phone)

@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 =begin
-
   # CÃES
   Race.create(description: 'Basset Azul da Gasconha')
   Race.create(description: 'Basset Fulvo da Bretanha')
@@ -42,5 +41,12 @@
   # Gajo ou Gaja
   Gender.create(description: 'Maxo')
   Gender.create(description: 'Femea')
+=end
 
+
+=begin
+  # User Roles
+  Role.create(description: 'admin')
+  Role.create(description: 'manager')
+  Role.create(description: 'owner')
 =end

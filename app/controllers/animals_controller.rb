@@ -1,13 +1,14 @@
 class AnimalsController < ApplicationController
 
-  before_action :get_clinic, only: [:new, :create, :show, :edit, :update, :destroy]
-  before_action :set_animal, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :clinic
+  load_and_authorize_resource :animal, :through => :clinic
+
+  before_action :set_animal_properties, only: [:new, :edit]
 
   def show
   end
 
   def new
-    @animal = @clinic.animals.new
   end
 
   def edit
@@ -49,15 +50,15 @@ class AnimalsController < ApplicationController
 
   private
 
-  def get_clinic
-    @clinic = Clinic.find(params[:clinic_id])
-  end
+  def set_animal_properties
+    @animal_properties = Hash.new
 
-  def set_animal
-    @animal = @clinic.animals.find(params[:id])
+    @animal_properties['race'] = Race.all.collect { |r| [r.description, r.id] }
+    @animal_properties['category'] = Category.all.collect { |r| [r.description, r.id] }
+    @animal_properties['gender'] = Gender.all.collect { |r| [r.description, r.id] }
   end
 
   def animal_params
-    params.require(:animal).permit(:animal_name, :owner_name, :birth_date, :weigth)
+    params.require(:animal).permit(:animal_name, :owner_name, :birth_date, :weigth, :gender_id, :category_id, :race_id)
   end
 end

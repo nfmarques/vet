@@ -49,6 +49,7 @@ div#menu ul#menu-items li.menu-item-horizontal {
 
 div#menu ul#menu-items li.menu-item-horizontal a {
     color: #C0E6C5;
+    text-decoration: none;
 }
 
 div#menu ul#menu-items li.menu-item-horizontal a:hover {

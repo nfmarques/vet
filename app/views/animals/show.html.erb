@@ -1,9 +1,39 @@
-<div>
-  <%= @animal.animal_name %> <br>
-  <%= @animal.owner_name %> <br>
-  <%= @animal.birth_date %> <br>
-  <%= @animal.weigth %> <br>
+<div class="field">
+  <%= label_tag 'Nome animal:' %>
+  <%= @animal.animal_name %>
 </div>
+
+<div class="field">
+  <%= label_tag 'Nome dono:' %>
+  <%= @animal.owner_name %>
+</div>
+
+<div class="field">
+  <%= label_tag 'Data de nascimento:' %>
+  <%= @animal.birth_date %>
+</div>
+
+<div class="field">
+  <%= label_tag 'Peso:' %>
+  <%= @animal.weigth %>
+</div>
+
+<div class="field">
+  <%= label_tag 'Sexo:' %>
+  <%= @animal.gender.description %>
+</div>
+
+<div class="field">
+  <%= label_tag 'Especie:' %>
+  <%= @animal.category.description %>
+</div>
+
+<div class="field">
+  <%= label_tag 'Raça:' %>
+  <%= @animal.race.description %>
+</div>
+
+<br>
 
 <%= link_to 'Edit', edit_clinic_animal_path(@clinic, @animal) %> |
 <%= link_to 'Back', clinic_path(@clinic) %>
