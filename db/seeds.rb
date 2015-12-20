@@ -50,3 +50,16 @@
   Role.create(description: 'manager')
   Role.create(description: 'owner')
 =end
+
+
+# Add Admin User
+=begin
+  admin_role = Role.find_by(description: 'admin')
+  User.create(username: 'admin' ,
+              email: 'admin@animalcardio.com',
+              password: '123qwe',
+              password_confirmation: '123qwe',
+              first_name: 'admin',
+              last_name: '',
+              role_id: admin_role.id)
+=end
